@@ -1,18 +1,48 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+
 import './App.css';
 
 class App extends Component {
+  constructor(){
+    super();
+  
+  this.state = {
+    list: [
+      'Sperghertti', 
+      'Ice Crame', 
+      'Sooshee', 
+      'Balog-knee', 
+      'Kimchi'
+  ],
+    input: ""
+   }
+  }
+
+  display(val) {
+    this.setState({
+      input: val
+    })
+  };
+  
+
   render() {
+    // we can do this because of destructuring
+    const {list, input} = this.state;
+    let newList = list.filter (elem => elem.includes(input)).map((elem, i) => {
+      return (
+        <div key={i}>
+          <h2>{elem}</h2>
+        </div>
+      )
+    });
+
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+        <input onChange={ e => this.display( e.target.value )} type ="text"/>
+       
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      {newList}
       </div>
     );
   }
