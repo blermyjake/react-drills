@@ -1,33 +1,30 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import './App.css';
-
+import "./App.css";
+// testing out something
 
 class App extends Component {
-
-  constructor(){
+  constructor() {
     super();
 
     this.state = {
       greeting: ""
-    }
+    };
   }
 
-updateBasicText(val){
-  this.setState({greeting: val});
-}
-
-
+  updateBasicText(val) {
+    this.setState({ greeting: val });
+  }
 
   render() {
     return (
       <div className="App">
-        <input onChange={ (e) => this.updateBasicText( e.target.value )} type ="text"/>
-        <p>{ this.state.greeting } </p>
-
-        </div>
-        
-      
+        <input
+          onChange={e => this.updateBasicText(e.target.value)}
+          type="text"
+        />
+        <p>{this.state.greeting} </p>
+      </div>
     );
   }
 }
